@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon_inc/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_inc/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_inc/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_inc/android-chrome-512x512.png">
+    <title>Tear de Crônicas - Harmonia Pastel.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex flex-col items-center pt-6 px-4 md:pt-16" id="app-body">
+    
+    <div id="floating-asset" class="fixed top-12 left-1/4 text-4xl float-icon pointer-events-none transition-all duration-1000 hidden md:block">🍂</div>
+
+    <main class="w-full max-w-4xl z-10">
+        
+        <header id="main-header" class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8">
+            <div class="flex flex-col items-center md:items-start w-full">
+                <div class="flex items-center gap-4 mb-2">
+                    <h1 class="text-[10px] tracking-[0.4em] uppercase font-bold info-label" id="main-label">Tear de Crônicas</h1>
+                </div>
+                <input type="text" id="story-title" class="bg-transparent text-2xl md:text-3xl font-light serif outline-none border-none transition-all w-full text-center md:text-left overflow-hidden text-ellipsis whitespace-nowrap" value="Fragmentos de Outono">
+            </div>
+
+            <nav id="nav-container" class="flex items-center gap-2">
+                <button onclick="setTheme('autumn')" id="btn-autumn" class="station-btn active">Outono<div class="active-indicator"></div></button>
+                <button onclick="setTheme('spring')" id="btn-spring" class="station-btn">Primavera<div class="active-indicator"></div></button>
+                <button onclick="setTheme('rain')" id="btn-rain" class="station-btn">Chuva<div class="active-indicator"></div></button>
+                <button onclick="setTheme('night')" id="btn-night" class="station-btn">Noite<div class="active-indicator"></div></button>
+            </nav>
+        </header>
+
+        <div id="editor-container" class="glass-panel relative p-6 md:p-14 mb-16 group">
+            <div class="typing-pulse" id="pulse-dot"></div>
+            
+            <textarea id="story-editor" 
+                placeholder="Deixe os pensamentos fluírem..." 
+                class="w-full h-[300px] md:h-[450px] bg-transparent text-lg md:text-2xl leading-[1.8] serif text-current placeholder-current opacity-70 focus:opacity-100 transition-opacity duration-700"></textarea>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mt-6 md:mt-8 gap-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 text-[11px] uppercase tracking-widest info-label" id="editor-info">
+                <div id="char-counter">0 Caracteres</div>
+                <div class="flex gap-6 md:gap-8 flex-wrap justify-center">
+                    <button onclick="clearEditor()" class="hover:tracking-[0.2em] transition-all cursor-pointer font-extrabold p-2">Limpar</button>
+                    <button onclick="exportStory()" class="hover:tracking-[0.2em] transition-all cursor-pointer font-extrabold p-2">Exportar .txt</button>
+                    <button onclick="saveStory()" class="hover:tracking-[0.2em] transition-all cursor-pointer font-extrabold p-2">Eternizar</button>
+                </div>
+            </div>
+        </div>
+
+        <section id="library-section" class="hidden pb-24">
+            <div class="h-px w-full bg-current opacity-20 mb-12" id="library-divider"></div>
+            <div id="stories-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"></div>
+        </section>
+    </main>
+
+    <footer id="main-footer" class="mt-auto py-8 text-center opacity-50">
+        <p class="text-[9px] md:text-[10px] tracking-[0.6em] md:tracking-[0.8em] uppercase px-4">
+    &copy; 2026 <strong>Tear de Crônicas</strong>.<a href="https://www.linkedin.com/in/richard-s-leichter-a33448218/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            style="color: #0084ff; text-decoration: none; font-weight: bold;">
+            Richard-S-Leichter.
+            </a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

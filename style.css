@@ -1,0 +1,149 @@
+
+        :root {
+            /* Outono atualizado conforme solicitado */
+            --autumn-bg: #fce8c5; --autumn-panel: #fddca2; --autumn-accent: #b07d4b;
+            
+            --spring-bg: #fff0f3; --spring-panel: #ffe4e8; --spring-accent: #e63946;
+            --rain-bg: #eef2f3; --rain-panel: #dce5e8; --rain-accent: #1d3557;
+            --night-bg: #121212; --night-panel: #1e1e1e; --night-accent: #a5b1c2;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s ease;
+            overflow-x: hidden;
+            background-color: var(--autumn-bg);
+            color: #222;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .serif { font-family: 'Lora', serif; }
+
+        /* Painel com efeito Glassmorphism */
+        .glass-panel {
+            background-color: var(--autumn-panel);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 32px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .night .glass-panel {
+            background-color: var(--night-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Cartões da Biblioteca */
+        .story-card {
+            color: inherit;
+        }
+
+        .story-card:hover {
+            transform: translateY(-8px);
+            filter: brightness(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Botões de Estação */
+        .station-btn {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s ease;
+            color: #777;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .station-btn.active { color: #000; font-weight: 700; }
+        .night .station-btn { color: #888; }
+        .night .station-btn.active { color: #fff; }
+
+        .active-indicator {
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .active .active-indicator { 
+            opacity: 1; 
+            transform: translateX(-50%) translateY(-4px);
+        }
+
+        /* Editor */
+        textarea {
+            outline: none;
+            resize: none;
+            scrollbar-width: none;
+        }
+        textarea::-webkit-scrollbar { display: none; }
+
+        /* Feedback visual de digitação */
+        .typing-pulse {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .is-typing .typing-pulse {
+            opacity: 0.6;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .info-label {
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: var(--autumn-accent);
+            opacity: 1;
+            transition: color 0.8s ease;
+        }
+
+        /* Elemento flutuante */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-icon {
+            animation: floating 4s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        /* Partículas de inspiração */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            animation: fadeAndFall 2s forwards;
+        }
+        @keyframes fadeAndFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(50px) rotate(90deg); opacity: 0; }
+        }
+
+        /* Modo Zen: Esconde UI ao digitar */
+        .zen-mode #main-header, 
+        .zen-mode #main-footer,
+        .zen-mode #library-section {
+            opacity: 0.1;
+            pointer-events: none;
+            filter: blur(2px);
+        }
+        header, footer, section {
+            transition: all 1s ease;
+        }
